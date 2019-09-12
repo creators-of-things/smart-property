@@ -1,2 +1,2 @@
 # smart-property
-An IoT solution for managing real estate and property
+## Smart Property is an IoT solution for managing energy conservation in real estate and property
