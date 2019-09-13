@@ -4,7 +4,7 @@ int cm = 0;
  
 long readUltrasonicDistance(int triggerPin, int echoPin)
 {
-  pinMode(triggerPin, OUTPUT);
+  pinMode(triggerPin, OUTPUT);  
   digitalWrite(triggerPin, LOW);
   delayMicroseconds(2);
   digitalWrite(triggerPin, HIGH);
@@ -33,6 +33,20 @@ void deactivateAlarm () {
     Serial.println("ALARM DEACTIVATED");
 }
 
+void activateBuzzerSystem() {
+    cm = 0.01723 * readUltrasonicDistance(7, 7);
+    Serial.print(cm);
+    Serial.println("cm");
+    if (cm < 332) {
+        activateAlarm();
+    }
+    else {
+        deactivateAlarm();
+    }
+    delay(100);
+}
+
+
 void setup () {
  
   Serial.begin(9600);
@@ -42,16 +56,5 @@ void setup () {
 }
 
 void loop() {
-  // measure the ping time in cm
-  cm = 0.01723 * readUltrasonicDistance(7, 7);
-  Serial.print(cm);
-  Serial.println("cm");
-  if (cm < 332) {
-    activateAlarm();
-  }
-  else {
-    deactivateAlarm();
-  }
-  delay(100);
-  
+  activateBuzzerSystem();
 }
