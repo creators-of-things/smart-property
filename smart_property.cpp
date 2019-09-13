@@ -2,6 +2,15 @@ const int ledPin = 13;
 const int buzzerPin = 12;
 int cm = 0;
 
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(5, INPUT);
+  pinMode(2, OUTPUT);
+  pinMode(ledPin, OUTPUT);
+  pinMode(buzzerPin, OUTPUT);
+}
+
 long readUltrasonicDistance(int triggerPin, int echoPin)
 {
   pinMode(triggerPin, OUTPUT);  
@@ -44,16 +53,6 @@ void activateBuzzerSystem() {
         deactivateAlarm();
     }
     delay(100);
-}
-
-
-void setup()
-{
-  pinMode(5, INPUT);
-  pinMode(2, OUTPUT);
-  Serial.begin(9600);
-  pinMode(ledPin, OUTPUT);
-  pinMode(buzzerPin, OUTPUT);
 }
 
 void optimizeLight(){
